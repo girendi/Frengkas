@@ -7,4 +7,12 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="todo">TODO</string>
+    <string name="service_name">Service Name</string>
+    <string name="pilih_rentang_usia">Pilih Rentang Usia:</string>
+    <string name="ok">OK</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="pilih_tanggal">Pilih Tanggal</string>
+    <string name="pilih_jam">Pilih Jam</string>
+    <string name="price">Price</string>
 </resources>
