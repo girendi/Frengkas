@@ -42,3 +42,4 @@ Route::post('/pukul', 'PukulController@store');
 Route::get('/order', 'OrderController@index');
 Route::post('/order', 'OrderController@store');
 Route::get('/show/order/{id}', 'OrderController@show');
+Route::post('/delete/order/{id}', 'OrderController@destroy');

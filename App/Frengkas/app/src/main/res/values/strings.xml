@@ -26,4 +26,14 @@
     <string name="password">Password</string>
     <string name="confirmation_password">Confirmation Password</string>
     <string name="name">Name</string>
+    <string name="pesanan_anda">Pesanan Anda :</string>
+    <string name="layanan">Layanan</string>
+    <string name="rentang_usia">Rentang Usia</string>
+    <string name="waktu">Waktu</string>
+    <string name="total_biaya">Total Biaya</string>
+    <string name="booking">Booking</string>
+    <string name="cancel">Cancel</string>
+    <string name="sukses">Sukses</string>
+    <string name="pesanan_anda_telah_berhasil">Pesanan Anda Telah \n Berhasil</string>
+    <string name="kembali_ke_halaman_utama">Kembali ke Halaman Utama</string>
 </resources>

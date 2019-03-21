@@ -60,31 +60,37 @@ public class LocationActivity extends AppCompatActivity {
         id_user = SaveSharedPreference.getIdUser(this);
 
         initComponent();
+        location = et_location.getText().toString();
         setSpinnerDate();
 
         btnPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Message Button", "Tombol Ditekan");
                 saveData();
             }
         });
     }
 
     private void saveData() {
-        baseService.createOrder(id_user, id_category, id_pukul, location)
+        baseService.createOrder(id_user, id_pukul, id_category, location)
                 .enqueue(new Callback<Order>() {
                     @Override
                     public void onResponse(Call<Order> call, Response<Order> response) {
                         if (response.isSuccessful()){
+                            Log.i("Data Save", "Id User " + id_user + " Id Pukul " + id_pukul + " Id Category " + id_category +" Location " +location);
+                            Order order = response.body();
                             Intent nextIntent = new Intent(getApplicationContext(), OrderActivity.class);
-                            nextIntent.putExtra("ID_ORDER", 1);
+                            nextIntent.putExtra("ID_ORDER", order.getId());
                             startActivity(nextIntent);
+                        }else {
+                            Log.i("Message Save Data", "Gagal");
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Order> call, Throwable t) {
-                        Log.e("Error Message", t.getMessage());
+                        Log.e("Message", t.getMessage());
                     }
                 });
     }
@@ -100,7 +106,7 @@ public class LocationActivity extends AppCompatActivity {
         spinnerTime = findViewById(R.id.spn_time);
         btnPesan = findViewById(R.id.btn_pesan);
 
-        location = et_location.getText().toString();
+
     }
 
     public void setSpinnerDate(){

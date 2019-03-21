@@ -109,6 +109,18 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem itemLogin = menu.findItem(R.id.action_login);
+        MenuItem itemLogout = menu.findItem(R.id.action_logout);
+
+        if (SaveSharedPreference.getLoggedStatus(getApplicationContext())){
+            itemLogin.setVisible(false);
+            itemLogout.setVisible(true);
+        }else {
+            itemLogin.setVisible(true);
+            itemLogout.setVisible(false);
+        }
+
         return true;
     }
 

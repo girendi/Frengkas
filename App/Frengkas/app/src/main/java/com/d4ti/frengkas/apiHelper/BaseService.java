@@ -1,5 +1,6 @@
 package com.d4ti.frengkas.apiHelper;
 
+import com.d4ti.frengkas.model.Category;
 import com.d4ti.frengkas.model.Order;
 import com.d4ti.frengkas.model.Pukul;
 import com.d4ti.frengkas.model.Service;
@@ -11,6 +12,7 @@ import com.d4ti.frengkas.response.PukulResponse;
 import com.d4ti.frengkas.response.ServiceResponse;
 import com.d4ti.frengkas.response.WaktuResponse;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -32,6 +34,9 @@ public interface BaseService {
 
     @GET("category/{id_service}")
     Call<CategoryResponse> getCategory(@Path("id_service") int id_service);
+
+    @GET("show/category/{id}")
+    Call<Category> getDetailCategory(@Path("id") int id);
 
     @FormUrlEncoded
     @POST("login")
@@ -78,5 +83,9 @@ public interface BaseService {
                             @Field("id_pukul") int id_pukul,
                             @Field("id_category") int id_category,
                             @Field("location") String location);
+
+    @FormUrlEncoded
+    @POST("delete/order/{id}")
+    Call<ResponseBody> deleteOrder(@Path("id") int id);
 
 }
