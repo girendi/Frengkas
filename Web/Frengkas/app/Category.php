@@ -13,4 +13,8 @@ class Category extends Model
   public function service(){
       return $this->belongsTo('App\Service','id_service');
   }
+
+    public function orders(){
+        return $this->hasMany('App\Order','id_category');
+    }
 }

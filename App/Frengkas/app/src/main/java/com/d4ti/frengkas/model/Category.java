@@ -15,7 +15,8 @@ public class Category {
     public Category() {
     }
 
-    public Category(int id_service, String name, double price) {
+    public Category(int id, int id_service, String name, double price) {
+        this.id = id;
         this.id_service = id_service;
         this.name = name;
         this.price = price;

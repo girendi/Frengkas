@@ -5,13 +5,22 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.d4ti.frengkas.R;
+import com.d4ti.frengkas.apiHelper.APIUtils;
+import com.d4ti.frengkas.apiHelper.BaseService;
+import com.d4ti.frengkas.model.User;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +30,8 @@ public class RegisterFragment extends Fragment {
     private EditText et_name, et_email, et_pass, et_confir;
     private Button btn_register;
     private View view;
+    private BaseService baseService;
+    private String pass, confPass;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -38,14 +49,38 @@ public class RegisterFragment extends Fragment {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToLogin();
+                pass = et_pass.getText().toString();
+                confPass = et_confir.getText().toString();
+                if (pass.equals(confPass)){
+                    registerRequest();
+                }else{
+                    Toast.makeText(getActivity(), "Password Harus Sama", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         return view;
     }
 
+    private void registerRequest() {
+        baseService.registerRequest(et_name.getText().toString(), et_email.getText().toString(), pass)
+                .enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.isSuccessful()){
+                            goToLogin();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Log.e("Error Message", t.getMessage());
+                    }
+                });
+    }
+
     private void initComponent() {
+        baseService = APIUtils.getApiService();
         et_name = view.findViewById(R.id.txt_name);
         et_email = view.findViewById(R.id.txt_email);
         et_pass = view.findViewById(R.id.txt_password);

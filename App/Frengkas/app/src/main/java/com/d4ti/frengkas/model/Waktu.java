@@ -2,18 +2,18 @@ package com.d4ti.frengkas.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Service {
+public class Waktu {
     @SerializedName("id")
     private int id;
-    @SerializedName("name")
-    private String name;
+    @SerializedName("date")
+    private String date;
 
-    public Service() {
+    public Waktu() {
     }
 
-    public Service(int id, String name) {
+    public Waktu(int id, String date) {
         this.id = id;
-        this.name = name;
+        this.date = date;
     }
 
     public int getId() {
@@ -24,11 +24,11 @@ public class Service {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDate() {
+        return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDate(String date) {
+        this.date = date;
     }
 }
