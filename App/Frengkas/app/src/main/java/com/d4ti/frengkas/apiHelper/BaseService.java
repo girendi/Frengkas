@@ -77,6 +77,6 @@ public interface BaseService {
     Call<Order> createOrder(@Field("id_user") int id_user,
                             @Field("id_pukul") int id_pukul,
                             @Field("id_category") int id_category,
-                            @Field("location") int location);
+                            @Field("location") String location);
 
 }

@@ -47,7 +47,7 @@ class OrderController extends Controller
         $pukul = Pukul::find($order->id_pukul);
         $pukul->status = "booking";
         $pukul->save();
-        return 'Order successfully created with id ' . $order->id;
+        return response()->json($order);
     }
 
     /**

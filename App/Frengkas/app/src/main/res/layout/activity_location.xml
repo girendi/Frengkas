@@ -37,6 +37,7 @@
 
     <Spinner
         android:id="@+id/spn_date"
+        android:background="@color/colorPrimaryDark"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -51,6 +52,7 @@
 
     <Spinner
         android:id="@+id/spn_time"
+        android:background="@color/colorPrimaryDark"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -58,6 +60,7 @@
     </Spinner>
 
     <Button
+        android:id="@+id/btn_pesan"
         android:text="@string/pesan"
         android:layout_gravity="end"
         android:background="@color/colorWhite"
