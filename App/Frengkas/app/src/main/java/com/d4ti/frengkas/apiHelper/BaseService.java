@@ -1,6 +1,7 @@
 package com.d4ti.frengkas.apiHelper;
 
 import com.d4ti.frengkas.model.Service;
+import com.d4ti.frengkas.response.CategoryResponse;
 import com.d4ti.frengkas.response.ServiceResponse;
 
 import retrofit2.Call;
@@ -21,5 +22,8 @@ public interface BaseService {
     @FormUrlEncoded
     @POST("service")
     Call<Service> createService(@Body Service service);
+
+    @GET("category/{id_service}")
+    Call<CategoryResponse> getCategory(@Path("id_service") int id_service);
 
 }

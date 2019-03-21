@@ -1,8 +1,10 @@
 package com.d4ti.frengkas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +16,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.d4ti.frengkas.adapter.ServiceAdapter;
 import com.d4ti.frengkas.apiHelper.APIUtils;
 import com.d4ti.frengkas.apiHelper.BaseService;
 import com.d4ti.frengkas.model.Service;
 import com.d4ti.frengkas.response.ServiceResponse;
+import com.d4ti.frengkas.sharedPreference.SaveSharedPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.app_name);
@@ -68,6 +74,10 @@ public class MainActivity extends AppCompatActivity
                 if (response.isSuccessful()){
                     services = response.body().getServices();
                     if (!services.isEmpty()){
+                        rv_service.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        ServiceAdapter serviceAdapter =new ServiceAdapter(getApplicationContext());
+                        serviceAdapter.setServices(services);
+                        rv_service.setAdapter(serviceAdapter);
                         Log.i("Service Name", services.get(0).getName());
                     }else {
                         Log.i("Service Data", "Data Empty");
@@ -110,6 +120,14 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }else if (id == R.id.action_login){
+            startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+            finish();
+            return true;
+        }else if (id == R.id.action_logout){
+            SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             return true;
         }
 

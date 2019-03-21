@@ -47,6 +47,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
             public void onClick(View v) {
                 Intent nextIntent = new Intent(context.getApplicationContext(), AgeActivity.class);
                 nextIntent.putExtra("ID_SERVICE", getServices().get(i).getId());
+                nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 context.startActivity(nextIntent);
             }
         });
