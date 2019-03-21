@@ -15,6 +15,7 @@ import com.d4ti.frengkas.apiHelper.APIUtils;
 import com.d4ti.frengkas.apiHelper.BaseService;
 import com.d4ti.frengkas.model.Category;
 import com.d4ti.frengkas.response.CategoryResponse;
+import com.d4ti.frengkas.sharedPreference.SaveSharedPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,13 @@ public class AgeActivity extends AppCompatActivity {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getOption();
+                if(SaveSharedPreference.getLoggedStatus(getApplicationContext())){
+                    getOption();
+                }else {
+                    startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+                    finish();
+                }
+
             }
         });
     }
@@ -84,22 +91,22 @@ public class AgeActivity extends AppCompatActivity {
                     if (!categories.isEmpty()){
                         if (categories.size() <= 1){
                             idA = categories.get(0).getId();
-                            rbA.setText(categories.get(0).getName()+ " /t/t " + categories.get(0).getPrice());
+                            rbA.setText(categories.get(0).getName()+ " \t\t " + categories.get(0).getPrice());
                             rbR.setVisibility(View.INVISIBLE);
                             rbD.setVisibility(View.INVISIBLE);
                         }else if (categories.size() <= 2){
                             idA = categories.get(0).getId();
                             idR = categories.get(1).getId();
-                            rbA.setText(categories.get(0).getName()+ " /t/t " + categories.get(0).getPrice());
-                            rbR.setText(categories.get(1).getName()+ " /t/t " + categories.get(1).getPrice());
+                            rbA.setText(categories.get(0).getName()+ " \t\t " + categories.get(0).getPrice());
+                            rbR.setText(categories.get(1).getName()+ " \t\t " + categories.get(1).getPrice());
                             rbD.setVisibility(View.INVISIBLE);
                         }else{
                             idA = categories.get(0).getId();
                             idR = categories.get(1).getId();
                             idD = categories.get(2).getId();
-                            rbA.setText(categories.get(0).getName()+ " /t/t " + categories.get(0).getPrice());
-                            rbR.setText(categories.get(1).getName()+ " /t/t " + categories.get(1).getPrice());
-                            rbD.setText(categories.get(2).getName()+ " /t/t " + categories.get(2).getPrice());
+                            rbA.setText(categories.get(0).getName()+ " \t\t " + categories.get(0).getPrice());
+                            rbR.setText(categories.get(1).getName()+ " \t\t " + categories.get(1).getPrice());
+                            rbD.setText(categories.get(2).getName()+ " \t\t " + categories.get(2).getPrice());
                         }
                     }
                 }

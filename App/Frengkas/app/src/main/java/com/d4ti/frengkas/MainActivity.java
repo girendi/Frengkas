@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.d4ti.frengkas.adapter.ServiceAdapter;
 import com.d4ti.frengkas.apiHelper.APIUtils;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Call<ServiceResponse> call, Throwable t) {
-                Log.e("Api Error", t.getMessage());
+                Log.e("Api Error", "Cant load data base");
             }
         });
     }
@@ -122,13 +123,14 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }else if (id == R.id.action_login){
+            //Toast.makeText(this, "Status " + SaveSharedPreference.getLoggedStatus(this), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(), AuthActivity.class));
             finish();
-            return true;
         }else if (id == R.id.action_logout){
-            SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+            SaveSharedPreference.setLoggedIn(getApplicationContext(), false);
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            return true;
+            finish();
+            //Toast.makeText(this, "Status " + SaveSharedPreference.getLoggedStatus(this), Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
