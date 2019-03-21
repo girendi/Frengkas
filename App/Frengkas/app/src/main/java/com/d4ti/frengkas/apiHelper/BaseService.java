@@ -84,7 +84,6 @@ public interface BaseService {
                             @Field("id_category") int id_category,
                             @Field("location") String location);
 
-    @FormUrlEncoded
     @POST("delete/order/{id}")
     Call<ResponseBody> deleteOrder(@Path("id") int id);
 

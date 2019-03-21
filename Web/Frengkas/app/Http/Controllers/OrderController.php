@@ -97,7 +97,7 @@ class OrderController extends Controller
     {
         $order= Order::find($id);
         $pukul = Pukul::find($order->id_pukul);
-        $pukul->status = "booking";
+        $pukul->status = "free";
         $pukul->save();
         $order->delete();
         return 'Order successfully deleted';
