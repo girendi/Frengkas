@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,12 +17,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.d4ti.frengkas.adapter.ServiceAdapter;
 import com.d4ti.frengkas.apiHelper.APIUtils;
 import com.d4ti.frengkas.apiHelper.BaseService;
+import com.d4ti.frengkas.fragment.BookingFragment;
+import com.d4ti.frengkas.fragment.HomeFragment;
 import com.d4ti.frengkas.model.Service;
 import com.d4ti.frengkas.response.ServiceResponse;
 import com.d4ti.frengkas.sharedPreference.SaveSharedPreference;
@@ -36,9 +40,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private RecyclerView rv_service;
-    private List<Service> services;
-    private BaseService baseService;
+    private ImageButton imb_home, imb_booking;
+    HomeFragment homeFragment = new HomeFragment();
+    FragmentManager manager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,40 +63,40 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         initComponent();
-        getService();
+        onClick();
     }
 
     public void initComponent(){
-        rv_service = findViewById(R.id.rv_list);
-        services = new ArrayList<>();
-        baseService = APIUtils.getApiService();
+        imb_booking = findViewById(R.id.btn_booking);
+        imb_home = findViewById(R.id.btn_home);
     }
 
-    public void getService(){
-        baseService.getService().enqueue(new Callback<ServiceResponse>() {
+    public void onClick(){
+        imb_home.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<ServiceResponse> call, Response<ServiceResponse> response) {
-                if (response.isSuccessful()){
-                    services = response.body().getServices();
-                    if (!services.isEmpty()){
-                        rv_service.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        ServiceAdapter serviceAdapter =new ServiceAdapter(getApplicationContext());
-                        serviceAdapter.setServices(services);
-                        rv_service.setAdapter(serviceAdapter);
-                        Log.i("Service Name", services.get(0).getName());
-                    }else {
-                        Log.i("Service Data", "Data Empty");
-                    }
-                }else{
-                    Log.e("Service Error", response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ServiceResponse> call, Throwable t) {
-                Log.e("Api Error", "Cant load data base");
+            public void onClick(View v) {
+                manager.beginTransaction().replace(R.id.frame_auth, homeFragment).commit();
             }
         });
+
+        imb_booking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(SaveSharedPreference.getLoggedStatus(getApplicationContext())){
+                    BookingFragment bookingFragment = new BookingFragment();
+                    manager.beginTransaction().replace(R.id.frame_auth, bookingFragment).commit();
+                }else {
+                    startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+                    finish();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        manager.beginTransaction().replace(R.id.frame_auth, homeFragment).commit();
     }
 
     @Override

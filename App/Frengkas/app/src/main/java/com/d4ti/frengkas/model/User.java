@@ -11,15 +11,12 @@ public class User {
     private String email;
     @SerializedName("status")
     private String status;
+    @SerializedName("alamat")
+    private String alamat;
+    @SerializedName("no_telp")
+    private String no_telp;
 
     public User() {
-    }
-
-    public User(int id, String name, String email, String status) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.status = status;
     }
 
     public int getId() {
@@ -52,5 +49,21 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getNo_telp() {
+        return no_telp;
+    }
+
+    public void setNo_telp(String no_telp) {
+        this.no_telp = no_telp;
     }
 }

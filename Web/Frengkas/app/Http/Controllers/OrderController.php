@@ -19,6 +19,11 @@ class OrderController extends Controller
         return response()->json(['Order' => $orders]);
     }
 
+    public function orderCustomer($id){
+        $orders = Order::Where('id_user', '=', $id)->get();
+        return response()->json(['Order' => $orders]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,6 +47,7 @@ class OrderController extends Controller
         $order->id_pukul = $request->input('id_pukul');
         $order->id_category = $request->input('id_category');
         $order->location = $request->input('location');
+        $order->status = "Menunggu";
         $order->save();
 
         $pukul = Pukul::find($order->id_pukul);
@@ -82,7 +88,14 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $order = Order::find($id);
-        $order->location = $request->input('location');
+        $order->status = $request->input('status');
+
+        if ($order->status == "Batalkan"){
+            $pukul = Pukul::find($order->id_pukul);
+            $pukul->status = "free";
+            $pukul->save();
+        }
+
         $order->save();
         return 'Order successfully updated with id ' . $order->id;
     }

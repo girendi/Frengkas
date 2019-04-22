@@ -26,7 +26,9 @@ class UserController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -37,6 +39,8 @@ class UserController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
+            'alamat' => $request['alamat'],
+            'no_telp' => $request['no_telp'],
             'status' => "customer"
         ]);
         return response()->json($user, $this->successStatus);

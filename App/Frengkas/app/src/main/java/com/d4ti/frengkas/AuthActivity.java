@@ -15,9 +15,7 @@ import java.util.Objects;
 
 public class AuthActivity extends AppCompatActivity {
 
-    private Button btnLogin, btnRegister;
     LoginFragment loginFragment = new LoginFragment();
-    RegisterFragment registerFragment = new RegisterFragment();
     FragmentManager manager = getSupportFragmentManager();
 
     @Override
@@ -29,27 +27,6 @@ public class AuthActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
-
-        initComponent();
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                manager.beginTransaction().replace(R.id.frame_auth, loginFragment).commit();
-            }
-        });
-
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                manager.beginTransaction().replace(R.id.frame_auth, registerFragment).commit();
-            }
-        });
-    }
-
-    private void initComponent() {
-        btnLogin = findViewById(R.id.btn_login);
-        btnRegister = findViewById(R.id.btn_register);
     }
 
     @Override

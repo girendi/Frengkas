@@ -19,6 +19,7 @@ class CreateOrderTable extends Migration
             $table->integer('id_user')->unsigned();
             $table->integer('id_category')->unsigned();
             $table->string('location');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('id_pukul')->references('id')->on('pukuls');

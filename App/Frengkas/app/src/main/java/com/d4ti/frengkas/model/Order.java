@@ -13,16 +13,10 @@ public class Order {
     private int id_category;
     @SerializedName("location")
     private String location;
+    @SerializedName("status")
+    private String status;
 
     public Order() {
-    }
-
-    public Order(int id, int id_user, int id_pukul, int id_category, String location) {
-        this.id = id;
-        this.id_user = id_user;
-        this.id_pukul = id_pukul;
-        this.id_category = id_category;
-        this.location = location;
     }
 
     public int getId() {
@@ -63,5 +57,13 @@ public class Order {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

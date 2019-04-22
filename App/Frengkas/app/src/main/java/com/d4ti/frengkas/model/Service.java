@@ -7,13 +7,10 @@ public class Service {
     private int id;
     @SerializedName("name")
     private String name;
+    @SerializedName("desc")
+    private String desc;
 
     public Service() {
-    }
-
-    public Service(int id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public int getId() {
@@ -30,5 +27,13 @@ public class Service {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

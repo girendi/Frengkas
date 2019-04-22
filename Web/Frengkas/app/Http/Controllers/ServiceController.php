@@ -42,6 +42,7 @@ class ServiceController extends Controller
     {
       $service = New Service;
       $service->name = $request->input('name');
+      $service->desc = $request->input('desc');
       $service->save();
       return 'Service successfully created with id ' . $service->id;
     }
@@ -79,8 +80,9 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $service->name = $request->input('name');
+        $service->desc = $request->input('desc');
         $service->save();
-        return 'Service successfully updated with id ' . $supplier->id;
+        return 'Service successfully updated with id ' . $service->id;
     }
 
     /**

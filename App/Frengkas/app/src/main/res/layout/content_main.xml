@@ -9,14 +9,14 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_margin="10dp"
-        android:id="@+id/rv_list"
+    <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_above="@id/linear_layout"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/linear_layout"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content">
 
         <ImageButton
-            android:id="@+id/btn_store"
+            android:id="@+id/btn_home"
             android:src="@drawable/ic_store"
             android:padding="5dp"
             android:layout_margin="5dp"
@@ -37,7 +37,7 @@
             android:contentDescription="@string/todo" />
 
         <ImageButton
-            android:id="@+id/btn_path"
+            android:id="@+id/btn_booking"
             android:src="@drawable/ic_path"
             android:padding="5dp"
             android:layout_margin="5dp"

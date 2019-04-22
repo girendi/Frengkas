@@ -4,12 +4,15 @@ package com.d4ti.frengkas.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.d4ti.frengkas.MainActivity;
 import com.d4ti.frengkas.R;
@@ -30,6 +33,7 @@ import retrofit2.Response;
 public class LoginFragment extends Fragment {
 
     private Button btn_login;
+    private TextView tv_register;
     private EditText et_username, et_password;
     private View view;
     private BaseService baseService;
@@ -56,7 +60,23 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        tv_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                register();
+            }
+        });
+
         return view;
+    }
+
+    private void register() {
+        Fragment fragment = new RegisterFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_auth, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     private void loginRequest() {
@@ -88,6 +108,7 @@ public class LoginFragment extends Fragment {
         et_username = view.findViewById(R.id.txt_email);
         et_password = view.findViewById(R.id.txt_password);
         btn_login = view.findViewById(R.id.btn_login);
+        tv_register = view.findViewById(R.id.tv_register);
     }
 
 

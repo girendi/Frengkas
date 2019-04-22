@@ -47,7 +47,9 @@ public interface BaseService {
     @POST("register")
     Call<User> registerRequest(@Field("name") String name,
                                @Field("email") String email,
-                               @Field("password") String password);
+                               @Field("password") String password,
+                               @Field("alamat") String alamat,
+                               @Field("no_telp") String no_telp);
 
     @GET("waktu")
     Call<WaktuResponse> getWaktu();
@@ -73,6 +75,9 @@ public interface BaseService {
 
     @GET("order")
     Call<OrderResponse> getOrder();
+
+    @GET("orderCustomer/{id}")
+    Call<OrderResponse> getOrderCustomer(@Path("id") int id);
 
     @GET("show/order/{id}")
     Call<Order> getDetailOrder(@Path("id") int id);

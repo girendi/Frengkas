@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.d4ti.frengkas.R;
@@ -27,7 +28,8 @@ import retrofit2.Response;
  */
 public class RegisterFragment extends Fragment {
 
-    private EditText et_name, et_email, et_pass, et_confir;
+    private EditText et_name, et_email, et_pass, et_confir, et_address, et_phone;
+    private TextView tv_login;
     private Button btn_register;
     private View view;
     private BaseService baseService;
@@ -59,11 +61,18 @@ public class RegisterFragment extends Fragment {
             }
         });
 
+        tv_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToLogin();
+            }
+        });
+
         return view;
     }
 
     private void registerRequest() {
-        baseService.registerRequest(et_name.getText().toString(), et_email.getText().toString(), pass)
+        baseService.registerRequest(et_name.getText().toString(), et_email.getText().toString(), pass, et_address.getText().toString(), et_phone.getText().toString())
                 .enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
@@ -81,11 +90,14 @@ public class RegisterFragment extends Fragment {
 
     private void initComponent() {
         baseService = APIUtils.getApiService();
+        et_address = view.findViewById(R.id.txt_alamat);
+        et_phone = view.findViewById(R.id.txt_no);
         et_name = view.findViewById(R.id.txt_name);
         et_email = view.findViewById(R.id.txt_email);
         et_pass = view.findViewById(R.id.txt_password);
         et_confir = view.findViewById(R.id.txt_confir_password);
         btn_register = view.findViewById(R.id.btn_register);
+        tv_login = view.findViewById(R.id.tv_login);
     }
 
     private void goToLogin() {

@@ -40,6 +40,7 @@ Route::get('/show/pukul/{id}', 'PukulController@show');
 Route::post('/pukul', 'PukulController@store');
 
 Route::get('/order', 'OrderController@index');
+Route::get('/orderCustomer/{id}', 'OrderController@orderCustomer');
 Route::post('/order', 'OrderController@store');
 Route::get('/show/order/{id}', 'OrderController@show');
 Route::post('/delete/order/{id}', 'OrderController@destroy');
