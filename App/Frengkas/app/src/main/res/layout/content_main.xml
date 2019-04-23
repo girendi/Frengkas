@@ -10,7 +10,7 @@
     tools:showIn="@layout/app_bar_main">
 
     <FrameLayout
-        android:id="@+id/frame_layout"
+        android:id="@+id/layout_home"
         android:layout_above="@id/linear_layout"
         android:layout_margin="10dp"
         android:layout_width="match_parent"

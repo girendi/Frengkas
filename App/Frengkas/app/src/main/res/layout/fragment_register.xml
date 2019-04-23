@@ -7,122 +7,134 @@
     tools:context=".fragment.RegisterFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/image_logo"
-        android:src="@drawable/logo2"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:contentDescription="@string/todo" />
-
-    <EditText
-        android:id="@+id/txt_name"
-        android:layout_below="@id/image_logo"
-        android:inputType="textEmailAddress"
-        android:hint="@string/name"
-        android:padding="10dp"
-        android:ems="10"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/txt_email"
-        android:layout_below="@id/txt_name"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email"
-        android:padding="10dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/txt_alamat"
-        android:layout_below="@id/txt_email"
-        android:inputType="text"
-        android:hint="@string/alamat_sekarang"
-        android:padding="10dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+            <ImageView
+                android:id="@+id/image_logo"
+                android:src="@drawable/logo2"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:contentDescription="@string/todo" />
 
-    <EditText
-        android:id="@+id/txt_no"
-        android:layout_below="@id/txt_alamat"
-        android:inputType="phone"
-        android:hint="@string/nomor_handphone"
-        android:padding="10dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+            <EditText
+                android:id="@+id/txt_name"
+                android:layout_below="@id/image_logo"
+                android:inputType="textEmailAddress"
+                android:hint="@string/name"
+                android:padding="10dp"
+                android:ems="10"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-    <EditText
-        android:id="@+id/txt_password"
-        android:layout_below="@id/txt_no"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        android:padding="10dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+            <EditText
+                android:id="@+id/txt_email"
+                android:layout_below="@id/txt_name"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"
+                android:padding="10dp"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-    <EditText
-        android:id="@+id/txt_confir_password"
-        android:layout_below="@id/txt_password"
-        android:inputType="textPassword"
-        android:hint="@string/confirmation_password"
-        android:padding="10dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+            <EditText
+                android:id="@+id/txt_alamat"
+                android:layout_below="@id/txt_email"
+                android:inputType="text"
+                android:hint="@string/alamat_sekarang"
+                android:padding="10dp"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-    <Button
-        android:id="@+id/btn_register"
-        android:background="@color/colorWhite"
-        android:layout_below="@id/txt_confir_password"
-        android:text="@string/register"
-        android:textAllCaps="false"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_centerHorizontal="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/txt_no"
+                android:layout_below="@id/txt_alamat"
+                android:inputType="phone"
+                android:hint="@string/nomor_handphone"
+                android:padding="10dp"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-    <TextView
-        android:id="@+id/tv_login"
-        android:layout_margin="10dp"
-        android:layout_below="@id/btn_register"
-        android:text="Sudah Punya Akun? Login Disini"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/txt_password"
+                android:layout_below="@id/txt_no"
+                android:inputType="textPassword"
+                android:hint="@string/password"
+                android:padding="10dp"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/txt_confir_password"
+                android:layout_below="@id/txt_password"
+                android:inputType="textPassword"
+                android:hint="@string/confirmation_password"
+                android:padding="10dp"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:background="@color/colorWhite"
+                android:layout_below="@id/txt_confir_password"
+                android:text="@string/register"
+                android:textAllCaps="false"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_margin="10dp"
+                android:layout_below="@id/btn_register"
+                android:text="Sudah Punya Akun? Login Disini"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

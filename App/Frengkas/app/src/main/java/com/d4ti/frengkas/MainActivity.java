@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity
         imb_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.beginTransaction().replace(R.id.frame_auth, homeFragment).commit();
+                manager.beginTransaction().replace(R.id.layout_home, homeFragment).commit();
             }
         });
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 if(SaveSharedPreference.getLoggedStatus(getApplicationContext())){
                     BookingFragment bookingFragment = new BookingFragment();
-                    manager.beginTransaction().replace(R.id.frame_auth, bookingFragment).commit();
+                    manager.beginTransaction().replace(R.id.layout_home, bookingFragment).commit();
                 }else {
                     startActivity(new Intent(getApplicationContext(), AuthActivity.class));
                     finish();
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        manager.beginTransaction().replace(R.id.frame_auth, homeFragment).commit();
+        manager.beginTransaction().replace(R.id.layout_home, homeFragment).commit();
     }
 
     @Override

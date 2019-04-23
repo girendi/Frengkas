@@ -30,13 +30,20 @@ public interface BaseService {
 
     @FormUrlEncoded
     @POST("service")
-    Call<Service> createService(@Field("name") String name);
+    Call<Service> createService(@Field("name") String name,
+                                @Field("desc") String desc);
 
     @GET("category/{id_service}")
     Call<CategoryResponse> getCategory(@Path("id_service") int id_service);
 
     @GET("show/category/{id}")
     Call<Category> getDetailCategory(@Path("id") int id);
+
+    @FormUrlEncoded
+    @POST("category")
+    Call<Category> createCategory(@Field("id_service") int id_service,
+                                  @Field("name") String name,
+                                  @Field("price") Double price);
 
     @FormUrlEncoded
     @POST("login")
