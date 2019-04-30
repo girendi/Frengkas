@@ -33,6 +33,8 @@ public interface BaseService {
     Call<Service> createService(@Field("name") String name,
                                 @Field("desc") String desc);
 
+    @POST("service")
+
     @GET("category/{id_service}")
     Call<CategoryResponse> getCategory(@Path("id_service") int id_service);
 
