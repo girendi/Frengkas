@@ -22,6 +22,7 @@ import retrofit2.http.Path;
 
 public interface BaseService {
 
+    //Service
     @GET("service")
     Call<ServiceResponse> getService();
 
@@ -33,8 +34,16 @@ public interface BaseService {
     Call<Service> createService(@Field("name") String name,
                                 @Field("desc") String desc);
 
-    @POST("service")
+    @FormUrlEncoded
+    @POST("service/{id}")
+    Call<Service> updateService(@Path("id") int id,
+                                @Field("name") String name,
+                                @Field("desc") String desc);
 
+    @POST("delete/service/{id}")
+    Call<ResponseBody> deleteService(@Path("id") int id);
+
+    //Category
     @GET("category/{id_service}")
     Call<CategoryResponse> getCategory(@Path("id_service") int id_service);
 
@@ -46,6 +55,19 @@ public interface BaseService {
     Call<Category> createCategory(@Field("id_service") int id_service,
                                   @Field("name") String name,
                                   @Field("price") Double price);
+
+    @FormUrlEncoded
+    @POST("category/{id}")
+    Call<Category> updateCategory(@Path("id") int id,
+                                  @Field("name") String name,
+                                  @Field("price") Double price);
+
+    @POST("delete/category/{id}")
+    Call<ResponseBody> deleteCategory(@Path("id") int id);
+
+    //Auth
+    @GET("user/{id}")
+    Call<User> getDetailUser(@Path("id") int id);
 
     @FormUrlEncoded
     @POST("login")
@@ -60,6 +82,7 @@ public interface BaseService {
                                @Field("alamat") String alamat,
                                @Field("no_telp") String no_telp);
 
+    //Waktu
     @GET("waktu")
     Call<WaktuResponse> getWaktu();
 
@@ -70,6 +93,15 @@ public interface BaseService {
     @POST("waktu")
     Call<Waktu> createWaktu(@Field("date") String date);
 
+    @FormUrlEncoded
+    @POST("waktu/{id}")
+    Call<Waktu> updateWaktu(@Path("id") int id,
+                            @Field("date") String date);
+
+    @POST("delete/waktu/{id}")
+    Call<ResponseBody> deleteWaktu(@Path("id") int id);
+
+    //Pukul
     @GET("pukul/{id_waktu}")
     Call<PukulResponse> getPukul(@Path("id_waktu") int id_waktu);
 
@@ -82,6 +114,17 @@ public interface BaseService {
                             @Field("start") String start,
                             @Field("end") String end);
 
+    @FormUrlEncoded
+    @POST("pukul/{id}")
+    Call<Pukul> updatePukul(@Path("id") int id,
+                            @Field("start") String start,
+                            @Field("end") String end);
+
+    @POST("delete/pukul/{id}")
+    Call<ResponseBody> deletePukul(@Path("id") int id);
+
+
+    //Order
     @GET("order")
     Call<OrderResponse> getOrder();
 
@@ -97,6 +140,11 @@ public interface BaseService {
                             @Field("id_pukul") int id_pukul,
                             @Field("id_category") int id_category,
                             @Field("location") String location);
+
+    @FormUrlEncoded
+    @POST("order/{id}")
+    Call<Order> updateOrder(@Path("id") int id,
+                            @Field("status") String status);
 
     @POST("delete/order/{id}")
     Call<ResponseBody> deleteOrder(@Path("id") int id);

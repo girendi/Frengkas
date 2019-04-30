@@ -16,6 +16,7 @@ import com.d4ti.frengkas.model.Category;
 import com.d4ti.frengkas.model.Order;
 import com.d4ti.frengkas.model.Pukul;
 import com.d4ti.frengkas.model.Service;
+import com.d4ti.frengkas.model.User;
 import com.d4ti.frengkas.model.Waktu;
 
 import okhttp3.ResponseBody;
@@ -44,7 +45,29 @@ public class DetailOrderAdminActivity extends AppCompatActivity {
         btnDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                updateStatus("Ditolak");
+            }
+        });
+        btnAgree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateStatus("Diterima");
+            }
+        });
+    }
 
+    private void updateStatus(String status) {
+        baseService.updateOrder(id_order, status).enqueue(new Callback<Order>() {
+            @Override
+            public void onResponse(Call<Order> call, Response<Order> response) {
+                if (response.isSuccessful()){
+                    setData();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Order> call, Throwable t) {
+                t.printStackTrace();
             }
         });
     }
@@ -113,6 +136,20 @@ public class DetailOrderAdminActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<Pukul> call, Throwable t) {
                             Log.e("Error Pukul", t.getMessage());
+                        }
+                    });
+                    baseService.getDetailUser(order.getId_user()).enqueue(new Callback<User>() {
+                        @Override
+                        public void onResponse(Call<User> call, Response<User> response) {
+                            if (response.isSuccessful()){
+                                User user = response.body();
+                                txtName.setText(user.getName());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<User> call, Throwable t) {
+                            t.printStackTrace();
                         }
                     });
                 }

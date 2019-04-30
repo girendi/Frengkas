@@ -2,7 +2,6 @@
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,5 +14,33 @@
         android:layout_height="58dp">
 
     </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/txt_date"
+        android:text="@string/waktu"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:text="@string/create_time"
+        android:layout_margin="5dp"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_color"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_time"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

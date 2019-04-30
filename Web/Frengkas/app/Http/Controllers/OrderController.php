@@ -90,7 +90,7 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $request->input('status');
 
-        if ($order->status == "Batalkan"){
+        if ($order->status == "Ditolak"){
             $pukul = Pukul::find($order->id_pukul);
             $pukul->status = "free";
             $pukul->save();

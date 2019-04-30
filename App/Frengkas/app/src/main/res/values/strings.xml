@@ -47,4 +47,9 @@
     <string name="create_category">Create Category</string>
     <string name="create">Create</string>
     <string name="category_name">Category Name</string>
+    <string name="create_date">Create Date</string>
+    <string name="create_time">Create Time</string>
+    <string name="date_time">Date Time</string>
+    <string name="time_start">Time Start</string>
+    <string name="time_end">Time End</string>
 </resources>
