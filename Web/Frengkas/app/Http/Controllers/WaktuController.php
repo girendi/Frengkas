@@ -39,7 +39,7 @@ class WaktuController extends Controller
         $waktu = New Waktu;
         $waktu->date = $request->input('date');
         $waktu->save();
-        return 'Service successfully created with id ' . $waktu->id;
+        return response()->json($waktu);
     }
 
     /**
@@ -76,7 +76,7 @@ class WaktuController extends Controller
         $waktu = Waktu::find($id);
         $waktu->date = $request->input('date');
         $waktu->save();
-        return 'Waktu successfully updated with id ' . $waktu->id;
+        return response()->json($waktu);
     }
 
     /**

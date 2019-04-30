@@ -11,7 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".DetailOrderActivity"></activity>
+        <activity android:name=".admin.DetailOrderAdminActivity"></activity>
+        <activity android:name=".admin.time.CreateTimeActivity" />
+        <activity android:name=".admin.time.CreateDateActivity" />
+        <activity android:name=".admin.service.CreateCategoryActivity" />
+        <activity android:name=".admin.service.CreateServiceActivity" />
+        <activity android:name=".admin.time.DetailDateTimeActivity" />
+        <activity android:name=".admin.time.DateTimeActivity" />
+        <activity android:name=".admin.service.DetailServiceActivity" />
+        <activity android:name=".admin.service.ServiceActivity" />
+        <activity
+            android:name=".admin.AdminActivity"
+            android:label="@string/title_activity_admin"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
+        <activity android:name=".DetailOrderActivity" />
         <activity android:name=".AuthActivity" />
         <activity android:name=".SuccessActivity" />
         <activity

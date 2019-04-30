@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.d4ti.frengkas.MainActivity;
 import com.d4ti.frengkas.R;
+import com.d4ti.frengkas.admin.AdminActivity;
 import com.d4ti.frengkas.apiHelper.APIUtils;
 import com.d4ti.frengkas.apiHelper.BaseService;
 import com.d4ti.frengkas.model.User;
@@ -39,6 +40,7 @@ public class LoginFragment extends Fragment {
     private BaseService baseService;
     private User user;
     private int id;
+    private String status;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -88,9 +90,15 @@ public class LoginFragment extends Fragment {
                             user = response.body();
                             assert user != null;
                             id = user.getId();
+                            status = user.getStatus();
                             SaveSharedPreference.setLoggedIn(getActivity(), true);
                             SaveSharedPreference.setIdUser(getActivity(), id);
-                            startActivity(new Intent(getActivity(), MainActivity.class));
+                            SaveSharedPreference.setStatus(getActivity(), status);
+                            if (user.getStatus().equals("customer")){
+                                startActivity(new Intent(getActivity(), MainActivity.class));
+                            }else{
+                                startActivity(new Intent(getActivity(), AdminActivity.class));
+                            }
                             Objects.requireNonNull(getActivity()).finish();
                         }
                     }

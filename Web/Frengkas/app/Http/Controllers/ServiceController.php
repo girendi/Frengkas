@@ -44,7 +44,7 @@ class ServiceController extends Controller
       $service->name = $request->input('name');
       $service->desc = $request->input('desc');
       $service->save();
-      return 'Service successfully created with id ' . $service->id;
+      return response()->json($service);
     }
 
     /**
@@ -82,7 +82,7 @@ class ServiceController extends Controller
         $service->name = $request->input('name');
         $service->desc = $request->input('desc');
         $service->save();
-        return 'Service successfully updated with id ' . $service->id;
+        return response()->json($service);
     }
 
     /**

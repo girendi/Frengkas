@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.d4ti.frengkas.admin.AdminActivity;
+import com.d4ti.frengkas.sharedPreference.SaveSharedPreference;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -15,8 +18,18 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-               startActivity(new Intent(getApplicationContext(), MainActivity.class));
-               finish();
+                if (SaveSharedPreference.getLoggedStatus(getApplicationContext())){
+                    if (SaveSharedPreference.getStatus(getApplicationContext()).equals("customer")){
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        finish();
+                    }else {
+                        startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+                        finish();
+                    }
+                }else{
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                }
             }
         }, 3000);
     }

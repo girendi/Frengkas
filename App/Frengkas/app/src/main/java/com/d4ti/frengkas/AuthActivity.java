@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.d4ti.frengkas.admin.AdminActivity;
 import com.d4ti.frengkas.fragment.LoginFragment;
 import com.d4ti.frengkas.fragment.RegisterFragment;
 import com.d4ti.frengkas.sharedPreference.SaveSharedPreference;
@@ -24,8 +25,13 @@ public class AuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auth);
 
         if (SaveSharedPreference.getLoggedStatus(this)){
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            if (SaveSharedPreference.getStatus(this).equals("customer")){
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+            }else {
+                startActivity(new Intent(this, AdminActivity.class));
+                finish();
+            }
         }
     }
 

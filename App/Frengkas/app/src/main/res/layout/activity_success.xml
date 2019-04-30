@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SuccessActivity">
@@ -25,6 +25,7 @@
 
         <TextView
             android:id="@+id/txt_pesan"
+
             android:text="@string/pesanan_anda_telah_berhasil"
             android:layout_gravity="center"
             android:gravity="center"
@@ -35,7 +36,8 @@
         <Button
             android:id="@+id/btn_next"
             android:text="@string/kembali_ke_halaman_utama"
-            android:background="@color/colorWhite"
+            android:background="#777373"
+            android:textColor="@color/colorWhite"
             android:layout_margin="10dp"
             android:textSize="18sp"
             android:layout_gravity="center"

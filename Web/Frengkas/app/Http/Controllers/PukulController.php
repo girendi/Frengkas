@@ -45,7 +45,7 @@ class PukulController extends Controller
         $pukul->end = $request->input('end');
         $pukul->status = "free";
         $pukul->save();
-        return 'Pukul successfully created with id' . $pukul->id;
+        return response()->json($pukul);
     }
 
     /**
@@ -84,7 +84,7 @@ class PukulController extends Controller
         $pukul->end = $request->input('end');
         $pukul->status = $request->input('status');
         $pukul->save();
-        return 'Pukul successfully updated with id' . $pukul->id;
+        return response()->json($pukul);
     }
 
     /**

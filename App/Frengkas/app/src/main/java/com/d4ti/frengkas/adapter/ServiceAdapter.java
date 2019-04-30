@@ -12,11 +12,13 @@ import android.widget.TextView;
 
 import com.d4ti.frengkas.AgeActivity;
 import com.d4ti.frengkas.R;
+import com.d4ti.frengkas.admin.service.DetailServiceActivity;
 import com.d4ti.frengkas.apiHelper.APIUtils;
 import com.d4ti.frengkas.apiHelper.BaseService;
 import com.d4ti.frengkas.model.Category;
 import com.d4ti.frengkas.model.Service;
 import com.d4ti.frengkas.response.CategoryResponse;
+import com.d4ti.frengkas.sharedPreference.SaveSharedPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,10 +92,20 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(context.getApplicationContext(), AgeActivity.class);
-                nextIntent.putExtra("ID_SERVICE", getServices().get(i).getId());
-                nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                context.startActivity(nextIntent);
+                if (SaveSharedPreference.getLoggedStatus(context)){
+                    if (SaveSharedPreference.getStatus(context).equals("customer")){
+                        Intent nextIntent = new Intent(context.getApplicationContext(), AgeActivity.class);
+                        nextIntent.putExtra("ID_SERVICE", getServices().get(i).getId());
+                        nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                        context.startActivity(nextIntent);
+                    }else {
+                        Intent nextIntent = new Intent(context.getApplicationContext(), DetailServiceActivity.class);
+                        nextIntent.putExtra("ID_SERVICE", getServices().get(i).getId());
+                        nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                        context.startActivity(nextIntent);
+                    }
+                }
+
             }
         });
     }

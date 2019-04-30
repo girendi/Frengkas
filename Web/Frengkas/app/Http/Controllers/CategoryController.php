@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index($id_service = null)
     {
-      $categories = Category::Where('id_service', '=', $id_service)->orderBy('name', 'asc')->get();
+      $categories = Category::Where('id_service', '=', $id_service)->orderBy('price', 'asc')->get();
       $service = Service::find($id_service);
       return response()->json(['Service' => $service, 'Category' => $categories]);
     }
@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $category->name = $request->input('name');
         $category->price = $request->input('price');
         $category->save();
-        return 'Category successfully created with id' . $category->id;
+        return response()->json($category);
     }
 
     /**
@@ -81,7 +81,7 @@ class CategoryController extends Controller
       $category->name = $request->input('name');
       $category->price = $request->input('price');
       $category->save();
-      return 'Category successfully updated with id' . $category->id;
+      return response()->json($category);
     }
 
     /**

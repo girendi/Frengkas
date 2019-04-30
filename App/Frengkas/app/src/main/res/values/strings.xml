@@ -33,11 +33,18 @@
     <string name="total_biaya">Total Biaya</string>
     <string name="booking">Booking</string>
     <string name="cancel">Cancel</string>
-    <string name="sukses">Sukses</string>
+    <string name="sukses">Sukses!</string>
     <string name="pesanan_anda_telah_berhasil">Pesanan Anda Telah \n Berhasil</string>
     <string name="kembali_ke_halaman_utama">Kembali ke Halaman Utama</string>
     <string name="alamat_sekarang">Alamat Sekarang</string>
     <string name="nomor_handphone">Nomor Handphone</string>
     <string name="servive_time">Servive - Time</string>
     <string name="status">Status</string>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="atas_name">Atas Name</string>
+    <string name="description">Description</string>
+    <string name="create_service">Create Service</string>
+    <string name="create_category">Create Category</string>
+    <string name="create">Create</string>
+    <string name="category_name">Category Name</string>
 </resources>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.d4ti.frengkas.DetailOrderActivity;
 import com.d4ti.frengkas.R;
+import com.d4ti.frengkas.admin.DetailOrderAdminActivity;
 import com.d4ti.frengkas.apiHelper.APIUtils;
 import com.d4ti.frengkas.apiHelper.BaseService;
 import com.d4ti.frengkas.model.Category;
@@ -18,6 +19,7 @@ import com.d4ti.frengkas.model.Order;
 import com.d4ti.frengkas.model.Pukul;
 import com.d4ti.frengkas.model.Service;
 import com.d4ti.frengkas.model.Waktu;
+import com.d4ti.frengkas.sharedPreference.SaveSharedPreference;
 
 import java.util.List;
 
@@ -112,9 +114,20 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DetailOrderActivity.class);
-                intent.putExtra("ID_ORDER", getOrders().get(i).getId());
-                context.startActivity(intent);
+                if (SaveSharedPreference.getLoggedStatus(context)){
+                    if (SaveSharedPreference.getStatus(context).equals("customer")){
+                        Intent intent = new Intent(context, DetailOrderActivity.class);
+                        intent.putExtra("ID_ORDER", getOrders().get(i).getId());
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                        context.startActivity(intent);
+                    }else {
+                        Intent intent = new Intent(context, DetailOrderAdminActivity.class);
+                        intent.putExtra("ID_ORDER", getOrders().get(i).getId());
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                        context.startActivity(intent);
+                    }
+                }
+
             }
         });
     }

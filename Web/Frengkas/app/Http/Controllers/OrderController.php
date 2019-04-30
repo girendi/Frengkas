@@ -97,7 +97,7 @@ class OrderController extends Controller
         }
 
         $order->save();
-        return 'Order successfully updated with id ' . $order->id;
+        return response()->json($order);
     }
 
     /**

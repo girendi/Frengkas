@@ -4,13 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LocationActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
+        android:background="#777373"
         android:layout_width="match_parent"
         android:layout_height="58dp">
 
@@ -25,6 +26,9 @@
     <EditText
         android:id="@+id/et_lokasi"
         android:hint="@string/lokasi"
+        android:background="@drawable/edit_text_color"
+        android:padding="10dp"
+        android:ems="10"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -63,7 +67,8 @@
         android:id="@+id/btn_pesan"
         android:text="@string/pesan"
         android:layout_gravity="end"
-        android:background="@color/colorWhite"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_color"
         android:textAllCaps="false"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"

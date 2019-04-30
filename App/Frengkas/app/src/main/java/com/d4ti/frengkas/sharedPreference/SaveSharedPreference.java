@@ -23,6 +23,12 @@ public class SaveSharedPreference {
         editor.apply();
     }
 
+    public static void setStatus(Context context, String status){
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        editor.putString(STATUS, status);
+        editor.apply();
+    }
+
     public static void setEmailUser(Context context, String email){
         SharedPreferences.Editor editor = getPreferences(context).edit();
         editor.putString(EMAIL_USER, email);
@@ -39,5 +45,9 @@ public class SaveSharedPreference {
 
     public static String getEmail(Context context){
         return getPreferences(context).getString(EMAIL_USER, "");
+    }
+
+    public static String getStatus(Context context){
+        return getPreferences(context).getString(STATUS, "");
     }
 }

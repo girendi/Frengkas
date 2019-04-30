@@ -19,6 +19,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
+Route::get('user/{id}', 'API\UserController@show');
 
 Route::get('/service/{id?}', 'ServiceController@index');
 Route::post('/service', 'ServiceController@store');
@@ -34,13 +35,18 @@ Route::delete('/category/{id}', 'CategoryController@destroy');
 Route::get('/waktu', 'WaktuController@index');
 Route::get('/show/waktu/{id}', 'WaktuController@show');
 Route::post('/waktu', 'WaktuController@store');
+Route::post('/waktu/{id}/', 'WaktuController@update');
+Route::delete('/waktu/{id}/', 'WaktuController@destroy');
 
 Route::get('/pukul/{id_waktu?}', 'PukulController@index');
 Route::get('/show/pukul/{id}', 'PukulController@show');
 Route::post('/pukul', 'PukulController@store');
+Route::post('/pukul/{id}', 'PukulController@update');
+Route::delete('/pukul/{id}', 'PukulController@destroy');
 
 Route::get('/order', 'OrderController@index');
 Route::get('/orderCustomer/{id}', 'OrderController@orderCustomer');
 Route::post('/order', 'OrderController@store');
 Route::get('/show/order/{id}', 'OrderController@show');
 Route::post('/delete/order/{id}', 'OrderController@destroy');
+Route::post('/order/{id}', 'OrderController@update');

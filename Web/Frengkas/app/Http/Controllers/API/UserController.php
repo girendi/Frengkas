@@ -46,4 +46,10 @@ class UserController extends Controller
         return response()->json($user, $this->successStatus);
 
     }
+
+    public function show($id)
+    {
+        return User::find($id);
+    }
+
 }

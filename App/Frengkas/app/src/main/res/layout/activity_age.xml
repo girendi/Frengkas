@@ -3,13 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AgeActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
+        android:background="#777373"
         android:layout_width="match_parent"
         android:layout_height="58dp">
 
@@ -60,7 +61,8 @@
         android:layout_margin="10dp"
         android:layout_below="@id/rg"
         android:layout_alignParentEnd="true"
-        android:background="@color/colorWhite"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>

@@ -4,13 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OrderActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
+        android:background="#777373"
         android:layout_width="match_parent"
         android:layout_height="58dp">
 
@@ -147,7 +148,8 @@
             android:text="@string/booking"
             android:textAllCaps="false"
             android:layout_marginEnd="10dp"
-            android:background="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:background="#777373"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
