@@ -19,7 +19,7 @@ class WaktuController extends Controller
 
         $mytime = Carbon::now()->format('d M Y');
 
-        $waktus = Waktu::Where('date', '<', $mytime)->get();
+        $waktus = Waktu::orderBy('date', 'asc')->get();
         return response()->json(['Waktu' => $waktus]);
     }
 
