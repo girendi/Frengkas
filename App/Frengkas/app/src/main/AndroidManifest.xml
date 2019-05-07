@@ -24,7 +24,8 @@
             android:name=".admin.AdminActivity"
             android:label="@string/title_activity_admin"
             android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
-        <activity android:name=".DetailOrderActivity" />
+        <activity android:name=".DetailOrderActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".AuthActivity" />
         <activity android:name=".SuccessActivity" />
         <activity

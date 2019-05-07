@@ -103,6 +103,18 @@ public class AdminActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.admin, menu);
+
+        MenuItem itemLogin = menu.findItem(R.id.action_login);
+        MenuItem itemLogout = menu.findItem(R.id.action_logout);
+
+        if (SaveSharedPreference.getLoggedStatus(getApplicationContext())){
+            itemLogin.setVisible(false);
+            itemLogout.setVisible(true);
+        }else {
+            itemLogin.setVisible(true);
+            itemLogout.setVisible(false);
+        }
+
         return true;
     }
 
@@ -120,7 +132,7 @@ public class AdminActivity extends AppCompatActivity
             finish();
         }else if (id == R.id.action_logout){
             SaveSharedPreference.setLoggedIn(getApplicationContext(), false);
-            startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
             //Toast.makeText(this, "Status " + SaveSharedPreference.getLoggedStatus(this), Toast.LENGTH_SHORT).show();
         }
