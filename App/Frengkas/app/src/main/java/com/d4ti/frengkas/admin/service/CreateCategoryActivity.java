@@ -51,6 +51,7 @@ public class CreateCategoryActivity extends AppCompatActivity {
             public void onResponse(Call<Category> call, Response<Category> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(CreateCategoryActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
 

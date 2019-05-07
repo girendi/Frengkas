@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Waktu;
+use Carbon\Carbon;
 
 class WaktuController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,10 @@ class WaktuController extends Controller
      */
     public function index()
     {
-        $waktus = Waktu::orderBy('date', 'asc')->get();
+
+        $mytime = Carbon::now()->format('d M Y');
+
+        $waktus = Waktu::Where('date', '<', $mytime)->get();
         return response()->json(['Waktu' => $waktus]);
     }
 

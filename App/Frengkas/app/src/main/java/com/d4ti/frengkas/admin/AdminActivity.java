@@ -61,6 +61,12 @@ public class AdminActivity extends AppCompatActivity
         setOrders();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setOrders();
+    }
+
     private void setOrders() {
         baseService.getOrder().enqueue(new Callback<OrderResponse>() {
             @Override
